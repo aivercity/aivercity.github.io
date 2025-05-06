@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aiversity | Portfolio</title>
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #32cd32; /* Warm green accent */
+      --secondary: #3f993f; /* Deep green */
+      --dark: #1A1A1A;     /* Cozy dark base */
+      --darker: #121212;   /* Rich background */
+      --light: #E8F5E9;    /* Soft greenish white */
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--darker);
+      color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+
+/* Navigation */
+.navbar {
+  position: fixed;
+  width: 100%;
+  padding: 1.2rem 2rem;
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(139, 195, 74, 0.1);
+}
+
+.nav-content {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  position: relative;
+  display: inline-block;
+  color: var(--light);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Underline effect on hover */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--primary);
+  transform: scaleX(0); /* Initially hide the underline */
+  transform-origin: center center;
+  transition: transform 0.3s ease, width 0.3s ease;
+}
+
+/* Hover and active link underline */
+.nav-links a:hover::after,
+.nav-links .active::after {
+  transform: scaleX(1); /* Underline grows to full width */
+}
+
+/* Active link style */
+.nav-links .active {
+  color: var(--primary);
+  text-shadow: 0 0 8px rgba(139, 195, 74, 0.8);
+}
+
+/* Logo and other styles */
+.nav-links .logo {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0.5px;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+  text-shadow: 0 0 8px rgba(139, 195, 74, 0.8);
+}
+
+.nav-links a:active {
+  color: var(--primary);
+}
+
+/* Additional mobile responsiveness (optional) */
+@media (max-width: 768px) {
+  .nav-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+    /* Hamburger Menu (Mobile) */
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      color: var(--light);
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 2rem;
+        background: rgba(26, 26, 26, 0.95);
+        padding: 1rem;
+        border-radius: 8px;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(
+          45deg,
+          rgba(26, 26, 26, 0.95),
+          rgba(18, 18, 18, 0.98)
+        ),
+        url('https://cdn.discordapp.com/attachments/1253241430676078594/1333024965691445308/image.png');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Pulsing overlay for hero background */
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      animation: pulse 4s infinite;
+      z-index: 0;
+    }
+
+    @keyframes pulse {
+      0% {
+        opacity: 0.6;
+      }
+      50% {
+        opacity: 0.8;
+      }
+      100% {
+        opacity: 0.6;
+      }
+    }
+
+    .hero-content {
+      text-align: center;
+      z-index: 1;
+      padding: 0 2rem;
+      max-width: 800px;
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      text-shadow: 0 4px 12px rgba(139, 195, 74, 0.2);
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      color: var(--light);
+      margin-bottom: 2.5rem;
+      opacity: 0.9;
+    }
+
+    .cta-btn {
+      padding: 1rem 2rem;
+      background: var(--primary);
+      color: var(--darker);
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Sliding light effect on cta-btn */
+    .cta-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: skewX(-45deg);
+      transition: left 0.5s;
+    }
+
+    .cta-btn:hover::before {
+      left: 200%;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 16px rgba(139, 195, 74, 0.3);
+    }
+
+    /* Base section styles */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--primary);
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    /* About Section (Big background text) */
+    .about-section {
+      position: relative;
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .about-section::before {
+      content: "About Me";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: clamp(4rem, 12vw, 12rem);
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.05);
+      text-transform: uppercase;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .about-content {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      z-index: 1;
+    }
+
+    .about-image {
+      flex: 1 1 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 280px;
+    }
+
+    .about-image img {
+      width: 280px;
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .about-text {
+      flex: 2 1 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.2rem;
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .about-text p {
+      color: #ccc;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .about-info {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+
+    .about-info p {
+      margin: 0.3rem 0;
+      font-size: 0.95rem;
+    }
+
+    .about-info strong {
+      color: var(--primary); /* bright yellow accent */
+    }
+
+    .projects-completed {
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #8bc34a; /* bright green accent */
+    }
+
+    /* Skills Section (Big background text) */
+    .skills-section {
+      position: relative;
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .skills-section::before {
+      content: "Skills";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: clamp(4rem, 12vw, 12rem);
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.05);
+      text-transform: uppercase;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .skills-content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      z-index: 1;
+    }
+
+    .skills-text h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .skills-text p {
+      color: #ccc;
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Example grid of skill cards */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-card {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(139, 195, 74, 0.1);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      background: rgba(139, 195, 74, 0.05);
+      border-color: rgba(139, 195, 74, 0.3);
+    }
+
+    .skill-card i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-card h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-card p {
+      color: rgba(232, 245, 233, 0.8);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .about-section,
+      .skills-section {
+        padding: 4rem 1rem;
+      }
+      .about-info {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-content">
+      <div class="logo">Aiversity</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <!-- New link to Skills section -->
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Full-Stack Developer & SysAdmin</h1>
+      <p>Building immersive experiences through Minecraft Development, Web Solutions, and Advanced Server Management.</p>
+      <button class="cta-btn">
+        <i class="fas fa-code-branch"></i>
+        View Projects
+      </button>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="about-content">
+      <!-- Avatar on the left -->
+      <div class="about-image">
+        <img 
+          src="https://cdn.discordapp.com/attachments/1239587835678429226/1342178426026594304/firepfparo_00000.png?ex=67b8b091&is=67b75f11&hm=4c8f4888cabd045fee64c67fa6750713b1f28ae9d629723f89861fb04746adf5&" 
+          alt="Avatar"
+        />
+      </div>
+
+      <!-- Text details on the right -->
+      <div class="about-text">
+        <h2>About Me</h2>
+        <p>
+          With 4+ years of development expertise, I craft unforgettable gaming experiences through my innovative server/development and designs. I have worked with several people and big servers and created websites for companies.
+        </p>
+
+        <!-- Info grid -->
+        <div class="about-info">
+          <p><strong>Username:</strong> Aiversity</p>
+          <p><strong>Date of Birth:</strong> 7 October</p>
+          <p><strong>Email:</strong> theaiversity@gmail.com</p>
+          <p><strong>Discord:</strong> aiversity</p>
+          <p><strong>Built By Bit:</strong> N/A</p>
+          <p><strong>LinkedIn:</strong> N/A</p>
+        </div>
+
+        <!-- Projects Completed or any highlight -->
+        <div class="projects-completed">
+          5 Projects Completed
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="skills-section" id="skills">
+    <div class="skills-content">
+      <div class="skills-text">
+        <h2>My Skills</h2>
+        <p>
+          I’ve honed my craft across a wide range of technologies, from Minecraft plugin development to advanced web design and beyond.
+        </p>
+      </div>
+
+      <!-- Example grid of skill cards -->
+      <div class="skills-grid">
+        <!-- Skill 1 -->
+        <div class="skill-card">
+          <i class="fab fa-java"></i>
+          <h3>Java</h3>
+          <p>Expert in Minecraft plugin development and performance optimization.</p>
+        </div>
+        <!-- Skill 2 -->
+        <div class="skill-card">
+          <i class="fab fa-js-square"></i>
+          <h3>JavaScript</h3>
+          <p>Front-end interactivity, Node.js, and server-side scripting.</p>
+        </div>
+        <!-- Skill 3 -->
+        <div class="skill-card">
+          <i class="fab fa-html5"></i>
+          <h3>HTML &amp; CSS</h3>
+          <p>Responsive web design, modern layouts, and animations.</p>
+        </div>
+        <!-- Skill 4 -->
+        <div class="skill-card">
+          <i class="fas fa-paint-brush"></i>
+          <h3>Design</h3>
+          <p>UI/UX design principles, logo creation, and brand identity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Projects Section -->
+<section class="projects-section" id="projects">
+  <div class="section-header">
+    <h2>Featured Projects</h2>
+  </div>
+  
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3>EternalSolar Network</h3>
+      <p>A massive multiplayer ecosystem featuring custom game modes, economy systems, and anti-cheat solutions.</p>
+    </div>
+    
+    <div class="project-card">
+      <h3>BlockCraft API</h3>
+      <p>Open-source framework for creating custom Minecraft plugins with enhanced performance and security.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Projects Section */
+  .projects-section {
+    position: relative;
+    padding: 6rem 2rem;
+    overflow: hidden;
+  }
+  
+  /* Background Watermark */
+  .projects-section::before {
+    content: "Projects";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 12vw, 12rem);
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.05);
+    text-transform: uppercase;
+    pointer-events: none;
+    z-index: 0;
+    white-space: nowrap;
+    letter-spacing: 0.5rem;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .project-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(139, 195, 74, 0.1);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+  }
+  
+  /* Enhanced Hover Animation */
+  .project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    background: rgba(139, 195, 74, 0.05);
+    border-color: rgba(139, 195, 74, 0.3);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Shine Animation */
+  .project-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 25%,
+      rgba(139, 195, 74, 0.1) 50%,
+      transparent 75%
+    );
+    opacity: 0;
+    transition: all 0.6s ease;
+    z-index: 1;
+  }
+  
+  .project-card:hover::after {
+    opacity: 1;
+    animation: shine 1.5s infinite;
+  }
+  
+  @keyframes shine {
+    0% { transform: translateX(-50%) rotate(45deg); }
+    100% { transform: translateX(150%) rotate(45deg); }
+  }
+
+  /* Content Layer */
+  .project-card > * {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .project-card h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+  }
+  
+  .project-card p {
+    color: rgba(232, 245, 233, 0.8);
+    line-height: 1.7;
+  }
+  </style>
+
+<!-- Add this in your HTML head to include Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<!-- Contact Section -->
+<section class="contact-section" id="contact">
+  <!-- Watermark Background Text -->
+  <div class="contact-content">
+    <h2 class="section-title">Contact Me</h2>
+    
+    <p class="contact-description">
+      Get in touch to discuss your project or any inquiries.<br>
+      I'm here to help!
+    </p>
+
+    <div class="contact-grid">
+      <div class="contact-method">
+        <h3>DISCORD</h3>
+        <a href="https://discord.eternalsolar.xyz" class="contact-link">
+          <i class="fab fa-discord"></i>
+          aiversity
+        </a>
+      </div>
+      
+      <div class="contact-method">
+        <h3>EMAIL ADDRESS</h3>
+        <a href="mailto:theaiversity@gmail.com" class="contact-link">
+          <i class="fas fa-envelope"></i>
+          theaiversity@gmail.com
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Existing styles remain the same */
+
+/* Add these new styles for icons */
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.contact-link i {
+  font-size: 1.4rem;
+  color: currentColor;
+  transition: color 0.3s ease;
+}
+
+/* Rest of existing styles */
+.contact-section {
+  position: relative;
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.contact-section::before {
+  content: "Contact";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(4rem, 12vw, 12rem);
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.05);
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-description {
+  color: #888;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-method h3 {
+  color: #666;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.contact-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: opacity 0.3s ease;
+}
+
+.contact-link:hover {
+  opacity: 0.8;
+  color: #32cd32;
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<!-- Footer Section -->
+<footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <!-- About Us Section -->
+        <div class="footer-section">
+          <h3>About Me</h3>
+          <p>With 4+ years of development expertise, I craft unforgettable gaming experiences through my innovative server/development and designs. I have worked with several people and big servers and created websites for companies.</p>
+        </div>
+  
+        <!-- Quick Links Section -->
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+  
+        <!-- Contact Section -->
+        <div class="footer-section">
+          <h3>Contact Me</h3>
+          <div class="contact-info">
+            <p>
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:theaiversity@eternalsolar.xyz">theaiversity@eternalsolar.xyz</a>
+            </p>
+          </div>
+          <div class="social-links">
+            <a href="https://facebook.com" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://linkedin.com" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Footer Bottom Section -->
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> Aiversity. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    // Set the current year dynamically
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  
+  <style>
+    /* Footer Styles */
+    .main-footer {
+      background-color: #1f1f1f;
+      color: #ffffff;
+      padding: 2rem;
+      font-family: Arial, sans-serif;
+    }
+  
+    .footer-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      padding: 1rem;
+      flex-wrap: wrap; /* Ensures sections stack on smaller screens */
+    }
+  
+    .footer-section {
+      flex: 1;
+      padding: 1rem;
+      position: relative;
+      min-width: 200px; /* Ensures sections don't collapse */
+    }
+  
+    /* Title style */
+    .footer-section h3 {
+      margin-bottom: 1rem;
+      color: #ffffff;
+      font-size: 1.5rem;
+      position: relative;
+      display: inline-block;
+      transition: color 0.3s ease-in-out;
+    }
+  
+    /* Underline animation directly under text */
+    .footer-section h3::after {
+      content: "";
+      display: block;
+      height: 2px;
+      width: 0;
+      background-color: #32cd32;
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      transition: width 0.3s ease-in-out;
+    }
+  
+    .footer-section:hover h3 {
+      color: #32cd32;
+    }
+  
+    .footer-section:hover h3::after {
+      width: 100%;
+    }
+  
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+  
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+  
+    /* Link hover effect */
+    .footer-links a {
+      text-decoration: none;
+      color: #ffffff;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 2px;
+      transition: color 0.3s ease-in-out;
+    }
+  
+    .footer-links a::after {
+      content: "";
+      display: block;
+      height: 2px;
+      width: 0;
+      background-color: #32cd32;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transition: width 0.3s ease-in-out;
+    }
+  
+    .footer-links a:hover {
+      color: #32cd32;
+    }
+  
+    .footer-links a:hover::after {
+      width: 100%;
+    }
+  
+    /* Contact info adjustments */
+    .contact-info {
+      font-size: 0.9rem;
+      color: #ffffff;
+      line-height: 1.6;
+      margin-bottom: 1rem; /* Added space between contact info and social links */
+    }
+  
+    .contact-info a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.3s ease-in-out;
+    }
+  
+    .contact-info a:hover {
+      color: #32cd32;
+    }
+  
+    /* Social Links Styling */
+    .social-links {
+      display: flex;
+      justify-content: flex-start;
+      gap: 1rem; /* Added gap for space between social icons */
+      flex-wrap: wrap; /* Ensure icons wrap on smaller screens */
+    }
+  
+    .social-links a {
+      font-size: 1.2rem; /* Reduced size of social icons */
+      color: #ffffff;
+      transition: color 0.3s ease-in-out;
+    }
+  
+    .social-links a:hover {
+      color: #32cd32;
+    }
+  
+    .footer-bottom {
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #bbbbbb;
+    }
+  </style>  
+
+  <!-- JavaScript -->
+  <script>
+    // Smooth Scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+          target.scrollIntoView({
+            behavior: "smooth",
+          });
+        }
+      });
+    });
+
+    // Intersection Observer for fade-in effects
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    // Fade in for each "section" plus about-section, skills-section, project-cards
+    document.querySelectorAll(
+      ".section, .about-section, .skills-section, .project-card"
+    ).forEach((el) => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(20px)";
+      el.style.transition = "all 0.6s ease";
+      observer.observe(el);
+    });
+
+    // Mobile Navigation Toggle
+    document.querySelector(".menu-toggle").addEventListener("click", function () {
+      document.querySelector(".nav-links").classList.toggle("active");
+    });
+  </script>
+</body>
+</html>
